@@ -16,10 +16,10 @@ pub struct Context {}
 #[derive(Debug, Default)]
 pub struct World(pub u64);
 
-#[derive(Debug, Default, Clone, Copy, Eq, Hash, PartialEq)]
+#[derive(Debug, Default)]
 pub struct Entity(pub u64);
-#[derive(Debug, TreeNodeStatus)]
 
+#[derive(Debug, TreeNodeStatus)]
 pub struct BtActNodeExample {
     base: TreeNodeBase,
     bb_data1: BlackBoardCell<Option<Entity>>,
