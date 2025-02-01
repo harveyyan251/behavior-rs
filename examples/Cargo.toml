@@ -1,0 +1,50 @@
+[package]
+name = "examples"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+# [dependencies] instead, and delete the **path**.
+[dev-dependencies]
+# behavior = { version = "0.1.0", path = "../behavior", features = [
+#     "gen_editor_data",
+#     "tree_visualization",
+#     "expression_node",
+# ] }
+# behavior = { version = "0.1.0", path = "../behavior", features = ["full"] }
+behavior = { version = "0.1.0", path = "../behavior" }
+behavior-util = { version = "0.1.0", path = "../behavior-util" }
+behavior-macros = { version = "0.1.0", path = "../behavior-macros" }
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"
+serde_json = "1.0"
+
+[[example]]
+name = "01_basic_usage"
+path = "01_basic_usage.rs"
+required-features = ["behavior/tree_visualization"]
+
+[[example]]
+name = "02_register_blackboard_type"
+path = "02_register_blackboard_type.rs"
+required-features = ["behavior/tree_visualization"]
+
+[[example]]
+name = "03_simple_stress"
+path = "03_simple_stress.rs"
+required-features = ["behavior/gen_editor_data", "behavior/expression_node"]
+
+[[example]]
+name = "04_subtree"
+path = "04_subtree.rs"
+required-features = ["behavior/tree_visualization"]
+
+[[example]]
+name = "05_limiter"
+path = "05_limiter.rs"
+required-features = ["behavior/tree_visualization"]
+
+[[example]]
+name = "06_expression"
+path = "06_expression.rs"
+required-features = ["behavior/expression_node", "behavior/tree_visualization"]

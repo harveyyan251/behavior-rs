@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+    "behavior",
+    "behavior-macros",
+    "behavior-util",
+
+    # Internalo
+    # "benches",
+    "examples",
+]
