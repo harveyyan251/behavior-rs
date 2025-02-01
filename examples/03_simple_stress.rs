@@ -179,18 +179,16 @@ fn main() {
     for _ in 0..10_000_000 {
         instance.as_mut().tick(&mut world, &entity);
     }
-    // AMD Ryzen 7 7800X3D, release 模式下大约消耗 75 ~ 80 ms
     tracing::info!("elapsed={:?}", start_time.elapsed());
 
     let mut num: usize = 0;
     let mut queue = VecDeque::new();
     let start_time = std::time::Instant::now();
     for i in 0..10_000_000 {
-        // 用 queue 防止 release 模式下优化成一次操作
-        num = num.wrapping_add(i) % 10_000;
+        num = num.wrapping_add(i) % 10_1000;
+        // num = num.wrapping_add(i) % std::hint::black_box(10_000);
         queue.push_back(num);
     }
-    // AMD Ryzen 7 7800X3D, release 模式下大约消耗 40 ms
     tracing::info!("elapsed={:?}", start_time.elapsed());
     tracing::info!(
         "blackboard: \n{}",
