@@ -173,7 +173,7 @@ fn main() {
         }
     }"#;
 
-    let entity = Entity(1);
+    let entity = Entity(0);
     let mut world = World(0);
 
     let mut bt_factory = BtFactory::<Context, World, Entity>::new();
@@ -189,6 +189,7 @@ fn main() {
     for _ in 0..10 {
         instance.as_mut().tick(&mut world, &entity);
     }
+
     tracing::info!(
         "tree: \n{}",
         instance.as_ref().visualize_tree_state().unwrap()

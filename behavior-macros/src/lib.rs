@@ -1,6 +1,5 @@
 extern crate proc_macro;
 extern crate quote;
-extern crate serde;
 extern crate serde_json;
 extern crate syn;
 use proc_macro::TokenStream;

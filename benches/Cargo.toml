@@ -1,0 +1,22 @@
+[package]
+name = "benches"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[dependencies]
+criterion = "0.5.1"
+
+# [dependencies] instead, and delete the **path**.
+[dev-dependencies]
+behavior = { version = "0.1.0", path = "../behavior" }
+# behavior = { version = "0.1.0", path = "../behavior", features = ["full"] }
+behavior-macros = { version = "0.1.0", path = "../behavior-macros" }
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"
+serde_json = "1.0"
+
+[[bench]]
+name = "control_node"
+path = "control_node.rs"
+harness = false

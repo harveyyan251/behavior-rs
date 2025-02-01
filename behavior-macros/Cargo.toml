@@ -10,5 +10,4 @@ proc-macro = true
 syn = { version = "1.0", features = ["visit"] }
 quote = "1.0"
 proc-macro2 = "1.0"
-serde = { version = "*", feature = "derive, serde_derive" }
 serde_json = { version = "*" }

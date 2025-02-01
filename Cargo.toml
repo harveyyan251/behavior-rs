@@ -6,6 +6,6 @@ members = [
     "behavior-util",
 
     # Internalo
-    # "benches",
+    "benches",
     "examples",
 ]

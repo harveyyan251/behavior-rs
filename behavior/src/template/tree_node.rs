@@ -169,14 +169,14 @@ mod tests {
 
     #[derive(Debug)]
     pub struct TestActionNode<A, B, F: ?Sized> {
-        idx: i32,
+        _idx: i32,
         action: A,
         _marker: PhantomData<(B, F)>,
     }
     impl<A, B, F: ?Sized> TestActionNode<A, B, F> {
-        pub fn new(idx: i32, action: A) -> Self {
+        pub fn new(_idx: i32, action: A) -> Self {
             Self {
-                idx,
+                _idx,
                 action,
                 _marker: PhantomData,
             }
@@ -198,21 +198,21 @@ mod tests {
         ) -> (Status, f64) {
             println!("TestActionNode::tick");
             let (status, dt) = func(&mut self.action, blackboard, 0.0);
-            blackboard.update_node_status(self.idx, status);
+            // blackboard.update_node_status(self.idx, status);
             (status, dt)
         }
     }
 
     pub struct TestInvertNode<A, B, F: ?Sized> {
-        idx: i32,
+        _idx: i32,
         child: Box<dyn TestStateNode<TickAction = A, BlackBoardValue = B, TickFunc = F>>,
     }
     impl<A, B, F: ?Sized> TestInvertNode<A, B, F> {
         pub fn new(
-            idx: i32,
+            _idx: i32,
             child: Box<dyn TestStateNode<TickAction = A, BlackBoardValue = B, TickFunc = F>>,
         ) -> Self {
-            Self { idx, child }
+            Self { _idx, child }
         }
     }
     impl<A, B, F> TestStateNode for TestInvertNode<A, B, F>
@@ -243,7 +243,7 @@ mod tests {
                     (Failure, dt)
                 }
             };
-            blackboard.update_node_status(self.idx, status);
+            // blackboard.update_node_status(self.idx, status);
             (status, dt)
         }
     }

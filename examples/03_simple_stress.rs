@@ -162,7 +162,7 @@ fn main() {
         }
     }"#;
 
-    let entity = Entity(1);
+    let entity = Entity(0);
     let mut world = World(0);
     let mut bt_factory = BtFactory::<Context, World, Entity>::new();
     bt_factory.register_tree_node::<BtActNodeExample>();

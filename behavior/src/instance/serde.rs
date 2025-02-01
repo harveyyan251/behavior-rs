@@ -10,8 +10,8 @@ cfg_expression_node!(
     use crate::template::ExpressionNode;
 );
 use crate::{
-    AlwaysSuccessNode, Behavior, BehaviorError, BlackBoard, BlackBoardMap, ImmediateRepeatNode,
-    ImmediateRetryNode, ParallelAndNode, WaitForeverNode, WaitNode,
+    AlwaysFailureNode, AlwaysSuccessNode, Behavior, BehaviorError, BlackBoard, BlackBoardMap,
+    ImmediateRepeatNode, ImmediateRetryNode, ParallelAndNode, WaitForeverNode, WaitNode,
 };
 use ahash::HashMapExt;
 use serde::{Deserialize, Serialize};
@@ -106,7 +106,7 @@ impl TreeTemplate {
                 Ok(Box::new(always_success_node))
             }
             Behavior::AlwaysFailure(node_index) => {
-                let always_failure_node = AlwaysSuccessNode::new(*node_index);
+                let always_failure_node = AlwaysFailureNode::new(*node_index);
                 Ok(Box::new(always_failure_node))
             }
             #[cfg(feature = "expression_node")]
