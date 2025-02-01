@@ -174,7 +174,7 @@ fn main() {
 
     let mut instance = bt_factory.create_tree_instance("test1").unwrap();
     // TODO: 正式的性能测试
-    // cargo run --release --package examples --example action_node2 --features behavior/gen_editor_data --features behavior/expression_node
+    // cargo run --release --package examples --example 03_simple_stress --features behavior/gen_editor_data --features behavior/expression_node
     let start_time = std::time::Instant::now();
     for _ in 0..10_000_000 {
         instance.as_mut().tick(&mut world, &entity);
