@@ -9,7 +9,17 @@ This project provides a behavior tree implementation in Rust. The implementation
 An example of defining an ActionNode is shown below:
 
 ```rust
+
+#[derive(Debug, Default)]
+pub struct Context {}
+
+#[derive(Debug, Default)]
+pub struct World(pub u64);
+
+#[derive(Debug, Default, Clone, Copy, Eq, Hash, PartialEq)]
+pub struct Entity(pub u64);
 #[derive(Debug, TreeNodeStatus)]
+
 pub struct BtActNodeExample {
     base: TreeNodeBase,
     bb_data1: BlackBoardCell<Option<Entity>>,
