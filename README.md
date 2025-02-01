@@ -163,7 +163,7 @@ let basic_tree_json_str = r#"
                             "name": "BtActNodeExample",
                             "meta_map": {
                                 "meta_data1": "50000",
-                                "meta_data2": "10000"
+                                "meta_data2": "100000"
                             },
                             "bb_ref_map": {
                                 "bb_data1": "blackboard_data1",
@@ -192,16 +192,16 @@ bt_factory
 
 let mut instance = bt_factory.create_tree_instance("basic_tree").unwrap();
 // instance.as_mut().tick(&mut world, &entity);
-    instance.as_mut().customized_tick(
-        &mut world,
-        &entity,
-        &mut |task, blackboard, world, entity| {
-            let start_time = std::time::Instant::now();
-            let status = task.action_tick(blackboard.context_mut(), world, &entity);
-            tracing::info!("elapsed={:?}", start_time.elapsed());
-            status
-        },
-    );
+instance.as_mut().customized_tick(
+    &mut world,
+    &entity,
+    &mut |task, blackboard, world, entity| {
+        let start_time = std::time::Instant::now();
+        let status = task.action_tick(blackboard.context_mut(), world, &entity);
+        tracing::info!("elapsed={:?}", start_time.elapsed());
+        status
+    },
+);
 ```
 
 ## Example
