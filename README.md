@@ -117,7 +117,71 @@ impl BtNode for BtActNodeExample {
 To create and tick a behavior tree instance, follow this example:
 
 ```rust
-let entity = Entity(1);
+
+let basic_tree_json_str = r#"
+{
+    "tree_blackboard": [
+        {
+            "bb_name": "blackboard_data1",
+            "bb_type": "i32",
+            "bb_value": "1000"
+        },
+        {
+            "bb_name": "blackboard_data2",
+            "bb_type": "f32",
+            "bb_value": "2000.0"
+        }
+    ],
+    "tree_structure": {
+        "Sequence": [
+            1,
+            [
+                {
+                    "Action": [
+                        2,
+                        {
+                            "name": "BtActNodeExample",
+                            "meta_map": {
+                                "meta_data1": "10000",
+                                "meta_data2": "20000"
+                            },
+                            "bb_ref_map": {
+                                "bb_data1": "blackboard_data1",
+                                "bb_data2": "blackboard_data2"
+                            },
+                            "dyn_ref_map": {
+                                "dyn_data1": "11111",
+                                "dyn_data2": "<blackboard_data2>"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Action": [
+                        3,
+                        {
+                            "name": "BtActNodeExample",
+                            "meta_map": {
+                                "meta_data1": "50000",
+                                "meta_data2": "10000"
+                            },
+                            "bb_ref_map": {
+                                "bb_data1": "blackboard_data1",
+                                "bb_data2": "blackboard_data2"
+                            },
+                            "dyn_ref_map": {
+                                "dyn_data1": "2222",
+                                "dyn_data2": "<blackboard_data2>"
+                            }
+                        }
+                    ]
+                }
+            ]
+        ]
+    }
+}"#;
+
+let entity = Entity(0);
 let mut world = World(0);
 
 let mut bt_factory = BtFactory::<Context, World, Entity>::new();
