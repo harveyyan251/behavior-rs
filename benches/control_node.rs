@@ -1,7 +1,6 @@
-use std::pin::Pin;
-
 use behavior::factory::{BtFactory, BtInstance};
 use criterion::{criterion_group, criterion_main, Criterion};
+use std::pin::Pin;
 
 #[derive(Debug, Default)]
 pub struct Context {}
@@ -174,4 +173,5 @@ criterion_group!(
     sequence_node_with_one_child,
     sequence_node_with_ten_children
 );
+
 criterion_main!(control_node_benches);
