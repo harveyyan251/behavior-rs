@@ -204,6 +204,10 @@ let mut instance = bt_factory.create_tree_instance("basic_tree").unwrap();
     );
 ```
 
+## Example
+
+See [Example](https://github.com/harveyyan251/behavior-rs/tree/master/examples) folder.
+
 ## Summary
 
 This behavior tree framework is designed to provide a flexible and efficient way to implement AI behaviors in Rust. However, please note that the project is still under development, with approximately 70% of the planned features already implemented. Contributions and suggestions for improvements are welcome!
