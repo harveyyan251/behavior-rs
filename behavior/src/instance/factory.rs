@@ -28,6 +28,9 @@ pub struct BtInstance<C: Unpin + Default + 'static, W: 'static, E: 'static> {
     _pinned: PhantomPinned,
 }
 
+unsafe impl<C: Unpin + Default + 'static, W: 'static, E: 'static> Send for BtInstance<C, W, E> {}
+unsafe impl<C: Unpin + Default + 'static, W: 'static, E: 'static> Sync for BtInstance<C, W, E> {}
+
 impl<C: Unpin + Default + 'static, W: 'static, E: 'static> BtInstance<C, W, E> {
     #[inline]
     pub fn tree_name(&self) -> &str {

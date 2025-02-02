@@ -18,6 +18,9 @@ behavior-macros = { version = "0.1.0", path = "../behavior-macros" }
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"
 serde_json = "1.0"
+# crossbeam = "0.8.4"
+ftlog = "0.2.14"
+
 
 [[example]]
 name = "01_basic_usage"
@@ -47,4 +50,9 @@ required-features = ["behavior/tree_visualization"]
 [[example]]
 name = "06_expression"
 path = "06_expression.rs"
+required-features = ["behavior/expression_node", "behavior/tree_visualization"]
+
+[[example]]
+name = "multithread"
+path = "multithread.rs"
 required-features = ["behavior/expression_node", "behavior/tree_visualization"]

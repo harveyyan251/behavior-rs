@@ -393,6 +393,7 @@ version = "0.0.0"
 dependencies = [
  "behavior",
  "behavior-macros",
+ "ftlog",
  "serde_json",
  "tracing",
  "tracing-subscriber",
