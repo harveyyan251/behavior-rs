@@ -85,8 +85,6 @@ dependencies = [
  "regex",
  "serde",
  "serde_json",
- "tracing",
- "tracing-subscriber",
 ]
 
 [[package]]

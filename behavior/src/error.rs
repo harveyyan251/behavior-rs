@@ -157,6 +157,25 @@ pub enum BehaviorError {
         parent_blackboard_type: String,
         subtree_blackboard_type: String,
     },
+    ExpressionInvalidOperatorTree {
+        tree_location: TreeLocation,
+        node_index: i32,
+        expression: String,
+        error_info: String,
+    },
+    ExpressionInvalidVariable {
+        tree_location: TreeLocation,
+        node_index: i32,
+        expression: String,
+        blackboard_name: String,
+        blackboard_type: String,
+    },
+    ExpressionVariableNotExist {
+        tree_location: TreeLocation,
+        node_index: i32,
+        expression: String,
+        blackboard_name: String,
+    },
 }
 
 impl core::fmt::Display for BehaviorError {

@@ -1,11 +1,7 @@
-#[cfg(feature = "expression_node")]
-use super::blackboard::{BlackBoardMap, SharedBlackBoardValue};
 use super::Status::{self, Failure, Running, Success};
 use super::{BlackBoard, TreeNode, TreeNodeBase};
 use super::{NodeType, TreeNodeStatus};
 use behavior_macros::TreeNodeStatus;
-#[cfg(feature = "expression_node")]
-use evalexpr::*;
 use std::marker::PhantomData;
 
 #[derive(TreeNodeStatus)]
@@ -405,25 +401,41 @@ where
 }
 
 cfg_expression_node! {
-    // TODO: 重构表达式节点
+    use super::blackboard::{BlackBoardMap, SharedBlackBoardValue};
+    use ahash::{HashMapExt, RandomState};
+    use std::collections::HashMap;
+    use crate::{TreeLocation, BehaviorError};
+    use evalexpr::*;
+
+    type VariableMap = HashMap<String, SharedBlackBoardValue, RandomState>;
     struct ExpressionWrapper {
         expr: Node,
-        variable_map: std::collections::HashMap<String, SharedBlackBoardValue>,
+        raw_expr: String,
+        variable_map: VariableMap,
     }
 
     impl ExpressionWrapper {
-        pub fn new(expr: &str, bb_map: &BlackBoardMap) -> Option<Self> {
+        pub fn new(
+            tree_name: &str,
+            tree_index: i32,
+            tree_depth: i32,
+            node_index: i32,
+            expr: &str,
+            bb_map: &BlackBoardMap,
+        ) -> Result<Self, BehaviorError> {
+            let raw_expr = expr.to_string();
             let expr = match build_operator_tree::<DefaultNumericTypes>(expr) {
                 Ok(expr) => expr,
                 Err(err) => {
-                    tracing::error!(
-                        "ExpressionWrapper::build_operator_tree failed, tracing::error={}",
-                        err
-                    );
-                    return None;
+                    return Err(BehaviorError::ExpressionInvalidOperatorTree {
+                        tree_location: TreeLocation::new(tree_name, tree_index, tree_depth),
+                        node_index,
+                        expression: raw_expr,
+                        error_info: err.to_string(),
+                    });
                 }
             };
-            let mut variable_map = std::collections::HashMap::new();
+            let mut variable_map = VariableMap::new();
             for var in expr.iter_variable_identifiers() {
                 if !variable_map.contains_key(var) {
                     match bb_map.get(var) {
@@ -431,44 +443,38 @@ cfg_expression_node! {
                             if value.is_expr_var() {
                                 variable_map.insert(var.to_string(), value.clone());
                             } else {
-                                tracing::error!(
-                                    "ExpressionWrapper::new failed, not valid expr variable, var={}, type={}",
-                                    var, value.bb_type()
-                                );
-                                return None;
+                                return Err(BehaviorError::ExpressionInvalidVariable {
+                                    tree_location: TreeLocation::new(tree_name, tree_index, tree_depth),
+                                    node_index,
+                                    expression: raw_expr,
+                                    blackboard_name: value.bb_name().to_string(),
+                                    blackboard_type: value.bb_type().to_string(),
+                                });
                             }
                         }
                         None => {
-                            tracing::error!(
-                                "ExpressionWrapper::new failed, var not exist in blackboard, var={}",
-                                var
-                            );
-                            return None;
+                            return Err(BehaviorError::ExpressionVariableNotExist {
+                                tree_location: TreeLocation::new(tree_name, tree_index, tree_depth),
+                                node_index,
+                                expression: raw_expr,
+                                blackboard_name: var.to_string(),
+                            });
                         }
                     }
                 }
             }
-            Some(Self { expr, variable_map })
+            Ok(Self { expr, raw_expr, variable_map })
         }
 
         pub fn eval(&mut self) -> Status {
             let mut context = HashMapContext::<DefaultNumericTypes>::new();
             for (var, value) in self.variable_map.iter() {
-                let value = match value.get_as_f64() {
-                    Some(val) => val,
-                    None => {
-                        tracing::error!("ExpressionWrapper::eval::get_as_f64 failed, var={}", var);
-                        return Status::Failure;
-                    }
-                };
-                let _ = context.set_value(var.clone(), Value::from_float(value));
+                let value = value.get_as_f64().unwrap();
+                context.set_value(var.clone(), Value::from_float(value)).unwrap();
             }
             let status = match self.expr.eval_with_context_mut(&mut context) {
                 Err(err) => {
-                    tracing::error!(
-                        "ExpressionWrapper::eval_with_context_mut failed, tracing::error_info={}",
-                        err
-                    );
+                    eprintln!("ExpressionWrapper::eval_with_context_mut failed, expression={}, error_info={}", self.raw_expr, err);
                     return Status::Failure;
                 }
                 Ok(res) => match res {
@@ -481,19 +487,13 @@ cfg_expression_node! {
                     Some(val) => match val {
                         Value::Float(val) => {
                             if !value.set_from_f64(*val) {
-                                tracing::error!("ExpressionWrapper::eval::set_from_f64 failed, type_name={}, var={}", value.bb_type(), var);
+                                eprintln!("ExpressionWrapper::set_from_f64 failed, expression={}, type_name={}, var={}", self.raw_expr, value.bb_type(), var);
                                 return Status::Failure;
                             };
                         }
-                        _ => {
-                            tracing::error!("ExpressionWrapper::eval failed, not Float var, var={}", var);
-                            return Status::Failure;
-                        }
+                        _ => unreachable!(),
                     },
-                    None => {
-                        tracing::error!("ExpressionWrapper::eval::get_value failed, var not exist in context, var={}", var);
-                        return Status::Failure;
-                    }
+                    _ => unreachable!(),
                 }
             }
             status
@@ -504,22 +504,27 @@ cfg_expression_node! {
     pub struct ExpressionNode<A, C, F: ?Sized, W, E> {
         base: TreeNodeBase,
         index: i32,
-        expression_str: String,
-        expression: Option<ExpressionWrapper>,
+        wrapper: ExpressionWrapper,
         _marker: PhantomData<(A, C, W, E, F)>,
     }
     impl<A, C, F: ?Sized, W, E> ExpressionNode<A, C, F, W, E> {
-        pub fn new(idx: i32, expression_str: &str, bb_map: &BlackBoardMap) -> Self {
+        pub fn new(
+            tree_name: &str,
+            tree_index: i32,
+            tree_depth: i32,
+            index: i32,
+            expression: &str,
+            bb_map: &BlackBoardMap,
+        ) -> Result<Self, crate::BehaviorError> {
             let base = TreeNodeBase::default();
-            let expression = ExpressionWrapper::new(expression_str, bb_map);
-            let expression_str = expression_str.to_string();
-            Self {
+            let wrapper =
+                ExpressionWrapper::new(tree_name, tree_index, tree_depth, index, expression, bb_map)?;
+            Ok(Self {
                 base,
-                index: idx,
-                expression,
-                expression_str,
+                index,
+                wrapper,
                 _marker: PhantomData,
-            }
+            })
         }
     }
     impl<A, C, F, W, E> TreeNode for ExpressionNode<A, C, F, W, E>
@@ -540,16 +545,7 @@ cfg_expression_node! {
             _world: &mut Self::World,
             _entity: &Self::Entity,
         ) -> Status {
-            let status = match &mut self.expression {
-                Some(expr) => expr.eval(),
-                None => {
-                    tracing::error!(
-                        "ExpressionNode::control_tick tracing::error, init failed, expression_str={}",
-                        self.expression_str
-                    );
-                    Status::Failure
-                }
-            };
+            let status = self.wrapper.eval();
             set_status!(self, blackboard, status)
         }
 

@@ -6,9 +6,6 @@ use crate::template::{
     ParallelSequenceNode, PriorityBranchNode, RepeatNode, RetryNode, SelectNode, SequenceNode,
     SubTreeNode, TimeoutNode, UntilFailureNode, UntilSuccessNode, WeightSelectNode, WhileNode,
 };
-cfg_expression_node!(
-    use crate::template::ExpressionNode;
-);
 use crate::{
     AlwaysFailureNode, AlwaysSuccessNode, Behavior, BehaviorError, BlackBoard, BlackBoardMap,
     ImmediateRepeatNode, ImmediateRetryNode, ParallelAndNode, WaitForeverNode, WaitNode,
@@ -44,6 +41,7 @@ impl TreeTemplate {
         tree_name: &str,
         tree_index: i32,
         tree_depth: i32,
+        // TODO: node_index 改为 i32,
         node_index: &i32,
         action_template: &ActionTemplate,
         blackboard_map: &BlackBoardMap,
@@ -111,9 +109,15 @@ impl TreeTemplate {
             }
             #[cfg(feature = "expression_node")]
             Behavior::Expression(node_index, expression_str) => {
-                // TODO: 使用 Result
-                let expression_node =
-                    ExpressionNode::new(*node_index, expression_str, blackboard_map);
+                use crate::template::ExpressionNode;
+                let expression_node = ExpressionNode::new(
+                    tree_name,
+                    tree_index,
+                    tree_depth,
+                    *node_index,
+                    expression_str,
+                    blackboard_map,
+                )?;
                 Ok(Box::new(expression_node))
             }
             Behavior::If(node_index, can_abort, cond, success) => {
