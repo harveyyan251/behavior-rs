@@ -7,22 +7,23 @@ edition = "2021"
 default = []
 full = ["gen_editor_data", "expression_node", "tree_visualization"]
 gen_editor_data = []
-expression_node = []
+expression_node = ["evalexpr", "num"]
 tree_visualization = []
 
 [dependencies]
-rand = "0.9.0"
-ahash = "0.8.11"
-tracing = "0.1.41"
-tracing-subscriber = "0.3.19"
-lazy_static = "1.5.0"
-bincode = { version = "2.0.0-rc.3" }
-serde = { version = "1.0.217", features = ["derive"] }
-serde_json = { version = "1.0.137" }
-chrono = "0.4.39"
-evalexpr = "12.0.2"
-regex = "1.11.1"
-downcast-rs = "2.0.1"
-num = "0.4.3"
 behavior-macros = { version = "0.1.0", path = "../behavior-macros" }
 behavior-util = { version = "0.1.0", path = "../behavior-util" }
+# TODO: 删除
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"
+
+rand = "0.9.0"
+ahash = "0.8.11"
+regex = "1.11.1"
+chrono = "0.4.39"
+evalexpr = { version = "12.0.2", optional = true }
+num = { version = "0.4.3", optional = true }
+downcast-rs = "2.0.1"
+serde = { version = "1.0.217", features = ["derive"] }
+serde_json = { version = "1.0.137" }
+bincode = { version = "2.0.0-rc.3" }

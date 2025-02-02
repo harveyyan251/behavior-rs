@@ -15,6 +15,13 @@ behavior-macros = { version = "0.1.0", path = "../behavior-macros" }
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"
 serde_json = "1.0"
+ftlog = "0.2.14"
+time = "0.3.37"
+
+[[bench]]
+name = "log"
+path = "log.rs"
+harness = false
 
 [[bench]]
 name = "control_node"

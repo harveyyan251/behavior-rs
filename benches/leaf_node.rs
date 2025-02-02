@@ -232,23 +232,31 @@ fn always_failure(c: &mut Criterion) {
     });
 }
 
-fn fibonacci(n: u64) -> u64 {
-    let mut a = 0;
-    let mut b = 1;
-    match n {
-        0 => b,
-        _ => {
-            for _ in 0..n {
-                let c = a + b;
-                a = b;
-                b = c;
+pub fn fibonacci(c: &mut Criterion) {
+    // fn inner_fibonacci(n: u64) -> u64 {
+    //     match n {
+    //         0 => 1,
+    //         1 => 1,
+    //         n => inner_fibonacci(n - 1) + inner_fibonacci(n - 2),
+    //     }
+    // }
+
+    fn inner_fibonacci(n: u64) -> u64 {
+        let mut a = 0;
+        let mut b = 1;
+        match n {
+            0 => b,
+            _ => {
+                for _ in 0..n {
+                    let c = a + b;
+                    a = b;
+                    b = c;
+                }
+                b
             }
-            b
         }
     }
-}
-pub fn fibonacci_bench(c: &mut Criterion) {
-    c.bench_function("fib 20", |b| b.iter(|| fibonacci(black_box(20))));
+    c.bench_function("fib 20", |b| b.iter(|| inner_fibonacci(black_box(20))));
     // c.bench_function("fib 20", |b| b.iter(|| fibonacci(20)));
 }
 
@@ -258,6 +266,6 @@ criterion_group!(
     empty_action,
     always_success,
     always_failure,
-    fibonacci_bench
+    fibonacci
 );
 criterion_main!(leaf_node_benches);
