@@ -407,11 +407,13 @@ cfg_expression_node! {
     use crate::{TreeLocation, BehaviorError};
     use evalexpr::*;
 
+    // TODO: 指针优化访问变量优化
     type VariableMap = HashMap<String, SharedBlackBoardValue, RandomState>;
     struct ExpressionWrapper {
         expr: Node,
         raw_expr: String,
         variable_map: VariableMap,
+        // context: HashMapContext::<DefaultNumericTypes>,
     }
 
     impl ExpressionWrapper {
@@ -436,12 +438,15 @@ cfg_expression_node! {
                 }
             };
             let mut variable_map = VariableMap::new();
+            // let mut context = HashMapContext::<DefaultNumericTypes>::new();
             for var in expr.iter_variable_identifiers() {
                 if !variable_map.contains_key(var) {
                     match bb_map.get(var) {
                         Some(value) => {
                             if value.is_expr_var() {
                                 variable_map.insert(var.to_string(), value.clone());
+                                // let value = value.get_as_f64().unwrap();
+                                // context.set_value(var.to_string(), Value::from_float(value)).unwrap();
                             } else {
                                 return Err(BehaviorError::ExpressionInvalidVariable {
                                     tree_location: TreeLocation::new(tree_name, tree_index, tree_depth),
@@ -463,7 +468,7 @@ cfg_expression_node! {
                     }
                 }
             }
-            Ok(Self { expr, raw_expr, variable_map })
+            Ok(Self { expr, raw_expr, variable_map})
         }
 
         pub fn eval(&mut self) -> Status {

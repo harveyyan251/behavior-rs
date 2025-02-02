@@ -9,7 +9,9 @@ criterion = "0.5.1"
 
 # [dependencies] instead, and delete the **path**.
 [dev-dependencies]
-behavior = { version = "0.1.0", path = "../behavior" }
+behavior = { version = "0.1.0", path = "../behavior", features = [
+    "expression_node",
+] }
 # behavior = { version = "0.1.0", path = "../behavior", features = ["full"] }
 behavior-macros = { version = "0.1.0", path = "../behavior-macros" }
 tracing = "0.1.41"

@@ -63,7 +63,7 @@ impl BtNode for BtActNodeExample {
     type Entity = Entity;
     fn tick(&mut self, _ctx: &mut Context, _world: &mut World, _entity: &Entity) -> Status {
         // 下列运算逻辑开销大约为 0.7 ~ 0.8 ns
-        self.tick_count.wrapping_add(1);
+        self.tick_count = self.tick_count.wrapping_add(1);
         *self.bb_data1 = self.meta_data1.get();
         *self.bb_data2 = self.meta_data2.get();
         if self.dyn_data1.is_mutable() {
@@ -200,6 +200,39 @@ fn empty_action(c: &mut Criterion) {
     });
 }
 
+fn expression(c: &mut Criterion) {
+    let bench_tree_json_str = r#"
+    {
+        "tree_blackboard": [
+            {
+                "bb_name": "num1",
+                "bb_type": "i32",
+                "bb_value": "1000"
+            },
+            {
+                "bb_name": "num2",
+                "bb_type": "i32",
+                "bb_value": "2000"
+            }
+        ],
+        "tree_structure": {
+            "Expression": [
+                1,
+                "num1 = num1 + num2; num1 = num1 % 10000;"
+            ]
+        }
+    }"#;
+    let mut bt_factory = BtFactory::<Context, World, Entity>::new();
+    bt_factory.register_tree_node::<BtActNodeExample>();
+    bt_factory
+        .compile_tree_template_from_json_str("bench_tree", bench_tree_json_str)
+        .unwrap();
+    let mut instance = bt_factory.create_tree_instance("bench_tree").unwrap();
+    c.bench_function("expression", |b| {
+        b.iter(|| instance.as_mut().tick(&mut World(0), &Entity(0)))
+    });
+}
+
 fn always_success(c: &mut Criterion) {
     let bench_tree_json_str = r#"
     {
@@ -264,6 +297,7 @@ criterion_group!(
     leaf_node_benches,
     action,
     empty_action,
+    expression,
     always_success,
     always_failure,
     fibonacci
