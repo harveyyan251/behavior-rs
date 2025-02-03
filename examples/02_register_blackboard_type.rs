@@ -134,7 +134,7 @@ fn main() {
             {
                 "bb_name": "blackboard_data4",
                 "bb_type": "f32",
-                "bb_value": "0"
+                "bb_value": "0.0"
             },
             {
                 "bb_name": "blackboard_data5",
@@ -173,15 +173,13 @@ fn main() {
         }
     }"#;
 
+    let log_path = std::path::Path::new("./examples/log/02_register_blackboard_type.log");
+    std::fs::remove_file(log_path).unwrap();
     let _guard = ftlog::builder()
         .max_log_level(ftlog::LevelFilter::Info)
         .root(ChainAppenders::new(vec![
             Box::new(std::io::stdout()),
-            Box::new(
-                FileAppender::builder()
-                    .path("./examples/log/02_register_blackboard_type.log")
-                    .build(),
-            ),
+            Box::new(FileAppender::builder().path(log_path).build()),
         ]))
         .try_init()
         .unwrap();

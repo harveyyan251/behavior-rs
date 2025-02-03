@@ -1,234 +1,112 @@
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=2.9µs
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=400ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=200ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=100ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=700ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=200ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=200ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=200ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=400ns
-2025-02-03 13:11:31.239+08 0ms ERROR main [examples\02_register_blackboard_type.rs:212] elapsed=200ns
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(100))
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1]
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=10
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.1
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=1111
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=82µs
-2025-02-03 13:11:59.837+08 0ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(200))
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2]
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=20
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.2
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=2222
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=11µs
-2025-02-03 13:11:59.837+08 1ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 2ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(300))
-2025-02-03 13:11:59.837+08 2ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3]
-2025-02-03 13:11:59.837+08 2ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 2ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 2ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=30
-2025-02-03 13:11:59.837+08 2ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.3
-2025-02-03 13:11:59.837+08 2ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=3333
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=9.9µs
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(400))
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3, 4]
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 3ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=40
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.4
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=4444
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=11.9µs
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(500))
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3, 4, 5]
-2025-02-03 13:11:59.837+08 4ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=50
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.5
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=5555
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=11.3µs
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 5ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(600))
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3, 4, 5, 6]
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=60
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.6
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=6666
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=10.8µs
-2025-02-03 13:11:59.837+08 6ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(700))
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3, 4, 5, 6, 7]
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=70
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.70000005
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 7ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=7777
-2025-02-03 13:11:59.837+08 8ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=9.8µs
-2025-02-03 13:11:59.837+08 8ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 8ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(800))
-2025-02-03 13:11:59.837+08 8ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8]
-2025-02-03 13:11:59.837+08 8ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 9ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 9ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=80
-2025-02-03 13:11:59.837+08 9ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.8000001
-2025-02-03 13:11:59.837+08 9ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 9ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=8888
-2025-02-03 13:11:59.837+08 9ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=10.9µs
-2025-02-03 13:11:59.837+08 10ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 10ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(900))
-2025-02-03 13:11:59.837+08 10ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8, 9]
-2025-02-03 13:11:59.837+08 10ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 10ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 10ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=90
-2025-02-03 13:11:59.837+08 10ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=0.9000001
-2025-02-03 13:11:59.837+08 11ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 11ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=9999
-2025-02-03 13:11:59.837+08 11ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=10.2µs
-2025-02-03 13:11:59.837+08 11ms INFO main [examples\02_register_blackboard_type.rs:79] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:11:59.837+08 11ms INFO main [examples\02_register_blackboard_type.rs:88] bb_data1=Some(Entity(1000))
-2025-02-03 13:11:59.837+08 11ms INFO main [examples\02_register_blackboard_type.rs:93] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-2025-02-03 13:11:59.837+08 12ms INFO main [examples\02_register_blackboard_type.rs:97] meta_data1=10
-2025-02-03 13:11:59.837+08 12ms INFO main [examples\02_register_blackboard_type.rs:98] meta_data2=0.1
-2025-02-03 13:11:59.837+08 13ms INFO main [examples\02_register_blackboard_type.rs:99] bb_data3=100
-2025-02-03 13:11:59.837+08 13ms INFO main [examples\02_register_blackboard_type.rs:100] bb_data4=1.0000001
-2025-02-03 13:11:59.837+08 13ms INFO main [examples\02_register_blackboard_type.rs:108] dyn_data1=1111
-2025-02-03 13:11:59.837+08 13ms INFO main [examples\02_register_blackboard_type.rs:109] dyn_data2=11110
-2025-02-03 13:11:59.837+08 14ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=10.3µs
-2025-02-03 13:11:59.837+08 14ms INFO main [examples\02_register_blackboard_type.rs:217] tree: 
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(100))
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1]
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=10
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.1
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=1111
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=37.7µs
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(200))
+2025-02-03 13:52:32.503+08 0ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2]
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=20
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.2
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=2222
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=7.4µs
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 1ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(300))
+2025-02-03 13:52:32.503+08 2ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3]
+2025-02-03 13:52:32.503+08 2ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 2ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 2ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=30
+2025-02-03 13:52:32.503+08 2ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.3
+2025-02-03 13:52:32.503+08 2ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 2ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=3333
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=5.7µs
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(400))
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4]
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=40
+2025-02-03 13:52:32.503+08 3ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.4
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=4444
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=8.3µs
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(500))
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5]
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 4ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=50
+2025-02-03 13:52:32.503+08 5ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.5
+2025-02-03 13:52:32.503+08 5ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 5ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=5555
+2025-02-03 13:52:32.503+08 5ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=6.9µs
+2025-02-03 13:52:32.503+08 5ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 5ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(600))
+2025-02-03 13:52:32.503+08 5ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6]
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=60
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.6
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=6666
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=6.9µs
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 6ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(700))
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7]
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=70
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.70000005
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=7777
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=7.7µs
+2025-02-03 13:52:32.503+08 7ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(800))
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8]
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=80
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.8000001
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 8ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=8888
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=7.7µs
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(900))
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8, 9]
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=90
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.9000001
+2025-02-03 13:52:32.503+08 9ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=9999
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=7.3µs
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(1000))
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=100
+2025-02-03 13:52:32.503+08 10ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=1.0000001
+2025-02-03 13:52:32.503+08 11ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
+2025-02-03 13:52:32.503+08 11ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=11110
+2025-02-03 13:52:32.503+08 11ms INFO main [examples\02_register_blackboard_type.rs:209] elapsed=6µs
+2025-02-03 13:52:32.503+08 11ms INFO main [examples\02_register_blackboard_type.rs:214] tree: 
 [1]SelectNode:Success
 └── [2]BtActNodeExample:Success
 
-2025-02-03 13:11:59.837+08 14ms INFO main [examples\02_register_blackboard_type.rs:221] blackboard: 
-SharedBlackBoardValue { bb_name: "blackboard_data4", bb_type: "f32", bb_value: RefCell { value: 1.0000001 } }
-SharedBlackBoardValue { bb_name: "blackboard_data2", bb_type: "VecDeque<usize>", bb_value: RefCell { value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] } }
+2025-02-03 13:52:32.503+08 11ms INFO main [examples\02_register_blackboard_type.rs:218] blackboard: 
 SharedBlackBoardValue { bb_name: "blackboard_data1", bb_type: "Option<Entity>", bb_value: RefCell { value: Some(Entity(1000)) } }
+SharedBlackBoardValue { bb_name: "blackboard_data2", bb_type: "VecDeque<usize>", bb_value: RefCell { value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] } }
 SharedBlackBoardValue { bb_name: "blackboard_data5", bb_type: "i32", bb_value: RefCell { value: 11110 } }
 SharedBlackBoardValue { bb_name: "blackboard_data3", bb_type: "i32", bb_value: RefCell { value: 100 } }
-
-2025-02-03 13:11:59.837+08 15ms INFO main [examples\02_register_blackboard_type.rs:225] Context
-2025-02-03 13:18:34.128+08 0ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 0ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(100))
-2025-02-03 13:18:34.128+08 0ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1]
-2025-02-03 13:18:34.128+08 0ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 0ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 0ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=10
-2025-02-03 13:18:34.128+08 0ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.1
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=1111
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=62.7µs
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(200))
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2]
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=20
-2025-02-03 13:18:34.128+08 1ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.2
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=2222
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=7.2µs
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(300))
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3]
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 2ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=30
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.3
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=3333
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=5.6µs
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(400))
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4]
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 3ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 4ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=40
-2025-02-03 13:18:34.128+08 4ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.4
-2025-02-03 13:18:34.128+08 4ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 4ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=4444
-2025-02-03 13:18:34.128+08 4ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=5.8µs
-2025-02-03 13:18:34.128+08 4ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 4ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(500))
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5]
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=50
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.5
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=5555
-2025-02-03 13:18:34.128+08 5ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=7.2µs
-2025-02-03 13:18:34.128+08 6ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 6ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(600))
-2025-02-03 13:18:34.128+08 6ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6]
-2025-02-03 13:18:34.128+08 6ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 6ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 6ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=60
-2025-02-03 13:18:34.128+08 6ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.6
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=6666
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=7.1µs
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(700))
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7]
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 7ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=70
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.70000005
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=7777
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=5.9µs
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(800))
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8]
-2025-02-03 13:18:34.128+08 8ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 9ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 9ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=80
-2025-02-03 13:18:34.128+08 9ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.8000001
-2025-02-03 13:18:34.128+08 9ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 9ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=8888
-2025-02-03 13:18:34.128+08 9ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=6.3µs
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(900))
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8, 9]
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=90
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=0.9000001
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 10ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=9999
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=7.5µs
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:66] -----------------------------(BtNodeExample::tick start)-----------------------------
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:75] bb_data1=Some(Entity(1000))
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:80] bb_data2=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:84] meta_data1=10
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:85] meta_data2=0.1
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:86] bb_data3=100
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:87] bb_data4=1.0000001
-2025-02-03 13:18:34.128+08 11ms INFO main [examples\02_register_blackboard_type.rs:95] dyn_data1=1111
-2025-02-03 13:18:34.128+08 12ms INFO main [examples\02_register_blackboard_type.rs:96] dyn_data2=11110
-2025-02-03 13:18:34.128+08 12ms INFO main [examples\02_register_blackboard_type.rs:212] elapsed=5.9µs
-2025-02-03 13:18:34.128+08 12ms INFO main [examples\02_register_blackboard_type.rs:217] tree: 
-[1]SelectNode:Success
-└── [2]BtActNodeExample:Success
-
-2025-02-03 13:18:34.128+08 12ms INFO main [examples\02_register_blackboard_type.rs:221] blackboard: 
-SharedBlackBoardValue { bb_name: "blackboard_data1", bb_type: "Option<Entity>", bb_value: RefCell { value: Some(Entity(1000)) } }
-SharedBlackBoardValue { bb_name: "blackboard_data5", bb_type: "i32", bb_value: RefCell { value: 11110 } }
 SharedBlackBoardValue { bb_name: "blackboard_data4", bb_type: "f32", bb_value: RefCell { value: 1.0000001 } }
-SharedBlackBoardValue { bb_name: "blackboard_data3", bb_type: "i32", bb_value: RefCell { value: 100 } }
-SharedBlackBoardValue { bb_name: "blackboard_data2", bb_type: "VecDeque<usize>", bb_value: RefCell { value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] } }
 
-2025-02-03 13:18:34.128+08 13ms INFO main [examples\02_register_blackboard_type.rs:225] Context
+2025-02-03 13:52:32.503+08 12ms INFO main [examples\02_register_blackboard_type.rs:222] Context

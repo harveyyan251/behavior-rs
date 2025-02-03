@@ -1,0 +1,17 @@
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:71] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:75] bb_data1=10
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:77] bb_data2=10
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:71] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:75] bb_data1=20
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:77] bb_data2=20
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:71] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:75] bb_data1=30
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:77] bb_data2=30
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:147] tree: 
+[1]LimiterNode:Failure
+└── [2]BtActNodeExample:Idle
+
+2025-02-03 13:56:44.734+08 0ms INFO main [examples\05_limiter.rs:151] blackboard: 
+SharedBlackBoardValue { bb_name: "blackboard_data2", bb_type: "f32", bb_value: RefCell { value: 30.0 } }
+SharedBlackBoardValue { bb_name: "blackboard_data1", bb_type: "i32", bb_value: RefCell { value: 30 } }
+

@@ -1,0 +1,34 @@
+2025-02-03 13:58:41.107+08 0ms INFO main [examples\multithread.rs:98] blackboard:
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 2 } }
+
+2025-02-03 13:58:41.107+08 0ms INFO main [examples\multithread.rs:98] blackboard:
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 4 } }
+
+2025-02-03 13:58:42.108+08 0ms INFO tick [examples\multithread.rs:111] blackboard: 
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 6 } }
+
+2025-02-03 13:58:43.109+08 0ms INFO tick [examples\multithread.rs:111] blackboard: 
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 8 } }
+
+2025-02-03 13:58:44.109+08 0ms INFO tick [examples\multithread.rs:111] blackboard: 
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 10 } }
+
+2025-02-03 13:58:45.109+08 0ms INFO tick [examples\multithread.rs:111] blackboard: 
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 15 } }
+
+2025-02-03 13:58:45.109+08 0ms INFO main [examples\multithread.rs:122] blackboard: 
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 20 } }
+
+2025-02-03 13:58:45.109+08 0ms INFO main [examples\multithread.rs:122] blackboard: 
+SharedBlackBoardValue { bb_name: "num", bb_type: "i32", bb_value: RefCell { value: 30 } }
+
+2025-02-03 13:58:45.110+08 0ms INFO main [examples\multithread.rs:127] tree: 
+[1]BranchNode:Success
+├── [2]BranchCondNode:Success
+│   ├── [3]ExpressionNode:Failure
+│   ├── [4]ExpressionNode:Failure
+│   └── [5]AlwaysSuccessNode:Success
+├── [6]ExpressionNode:Idle
+├── [7]ExpressionNode:Idle
+└── [8]ExpressionNode:Success
+

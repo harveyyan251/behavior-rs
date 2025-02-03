@@ -151,16 +151,13 @@ fn main() {
         }
     }"#;
 
+    let log_path = std::path::Path::new("./examples/log/01_basic_usage.log");
+    std::fs::remove_file(log_path).unwrap();
     let _guard = ftlog::builder()
         .max_log_level(ftlog::LevelFilter::Info)
         .root(ChainAppenders::new(vec![
             Box::new(std::io::stdout()),
-            Box::new(
-                FileAppender::builder()
-                    .path("./examples/log/01_basic_usage.log")
-                    // .rotate(Period::Day)
-                    .build(),
-            ),
+            Box::new(FileAppender::builder().path(log_path).build()),
         ]))
         .try_init()
         .unwrap();

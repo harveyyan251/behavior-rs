@@ -6,6 +6,7 @@ use behavior::{
 };
 use behavior::{generate_node, TreeNodeStatus};
 use behavior_macros::{EditorNodeDataGenerator, TreeNodeStatus};
+use ftlog::appender::*;
 use std::collections::{HashMap, VecDeque};
 
 #[derive(Debug, Default)]
@@ -96,10 +97,6 @@ impl BtNode for BtActNodeExample {
 }
 
 fn main() {
-    tracing_subscriber::fmt()
-        .with_max_level(tracing::Level::INFO)
-        .init();
-
     let example_tree_json = r#"
     {
         "tree_blackboard": [
@@ -162,6 +159,17 @@ fn main() {
         }
     }"#;
 
+    let log_path = std::path::Path::new("./examples/log/03_simple_stress.log");
+    std::fs::remove_file(log_path).unwrap();
+    let _guard = ftlog::builder()
+        .max_log_level(ftlog::LevelFilter::Info)
+        .root(ChainAppenders::new(vec![
+            Box::new(std::io::stdout()),
+            Box::new(FileAppender::builder().path(log_path).build()),
+        ]))
+        .try_init()
+        .unwrap();
+
     let entity = Entity(0);
     let mut world = World(0);
     let mut bt_factory = BtFactory::<Context, World, Entity>::new();
@@ -178,7 +186,7 @@ fn main() {
     for _ in 0..10_000_000 {
         instance.as_mut().tick(&mut world, &entity);
     }
-    tracing::info!("elapsed={:?}", start_time.elapsed());
+    ftlog::info!("elapsed={:?}", start_time.elapsed());
 
     let mut num: usize = 0;
     let mut queue = VecDeque::new();
@@ -188,8 +196,8 @@ fn main() {
         // num = num.wrapping_add(i) % std::hint::black_box(10_000);
         queue.push_back(num);
     }
-    tracing::info!("elapsed={:?}", start_time.elapsed());
-    tracing::info!(
+    ftlog::info!("elapsed={:?}", start_time.elapsed());
+    ftlog::info!(
         "blackboard: \n{}",
         instance.as_ref().visualize_blackboard_map().unwrap()
     );

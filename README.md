@@ -81,8 +81,6 @@ impl BtNode for BtActNodeExample {
 
         *self.bb_data3 += self.meta_data1.get();
         *self.bb_data4 += self.meta_data2.get();
-        ftlog::info!("meta_data1={:?}", self.meta_data1.get());
-        ftlog::info!("meta_data2={:?}", self.meta_data2.as_ref());
         ftlog::info!("bb_data3={:?}", self.bb_data3.as_ref());
         ftlog::info!("bb_data4={:?}", self.bb_data4.as_mut());
 
@@ -148,7 +146,7 @@ let register_blackboard_json_str = r#"
         {
             "bb_name": "blackboard_data4",
             "bb_type": "f32",
-            "bb_value": "0"
+            "bb_value": "0.0"
         },
         {
             "bb_name": "blackboard_data5",

@@ -1,0 +1,8 @@
+2025-02-03 13:53:19.036+08 0ms INFO main [examples\03_simple_stress.rs:189] elapsed=547.0027ms
+2025-02-03 13:53:19.170+08 0ms INFO main [examples\03_simple_stress.rs:199] elapsed=134.3004ms
+2025-02-03 13:53:19.170+08 0ms INFO main [examples\03_simple_stress.rs:200] blackboard: 
+SharedBlackBoardValue { bb_name: "blackboard_data2", bb_type: "VecDeque<i32>", bb_value: RefCell { value: [10] } }
+SharedBlackBoardValue { bb_name: "blackboard_data4", bb_type: "f32", bb_value: RefCell { value: 10000000.0 } }
+SharedBlackBoardValue { bb_name: "blackboard_data1", bb_type: "Option<Entity>", bb_value: RefCell { value: Some(Entity(300)) } }
+SharedBlackBoardValue { bb_name: "blackboard_data3", bb_type: "i32", bb_value: RefCell { value: 10000000 } }
+

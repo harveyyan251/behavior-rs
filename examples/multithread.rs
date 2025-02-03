@@ -1,6 +1,6 @@
-use std::thread::sleep;
-
 use behavior::factory::BtFactory;
+use ftlog::appender::*;
+use std::thread::sleep;
 
 #[derive(Debug, Default)]
 pub struct Context {}
@@ -72,17 +72,14 @@ fn main() {
         }
     }"#;
 
+    let log_path = std::path::Path::new("./examples/log/multithread.log");
+    std::fs::remove_file(log_path).unwrap();
     let _guard = ftlog::builder()
         .max_log_level(ftlog::LevelFilter::Info)
-        // .time_format(time_format)
-        // .bounded(100_1000, false)
-        // .root(
-        //     FileAppender::builder()
-        //         .path("./ftlog.log")
-        //         .rotate(Period::Day)
-        //         .expire(time::Duration::days(7))
-        //         .build(),
-        // )
+        .root(ChainAppenders::new(vec![
+            Box::new(std::io::stdout()),
+            Box::new(FileAppender::builder().path(log_path).build()),
+        ]))
         .try_init()
         .unwrap();
 

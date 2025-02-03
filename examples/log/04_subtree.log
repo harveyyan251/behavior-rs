@@ -1,0 +1,23 @@
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:71] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:75] bb_data1=10
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:77] bb_data2=10
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:71] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:75] bb_data1=10
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:77] bb_data2=20
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:71] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:75] bb_data1=20
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:77] bb_data2=30
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:71] -----------------------------(BtNodeExample::tick start)-----------------------------
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:75] bb_data1=20
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:77] bb_data2=40
+2025-02-03 13:56:34.944+08 0ms INFO main [examples\04_subtree.rs:198] tree: 
+[1]SequenceNode:Success
+└── [2]BtActNodeExample:Success
+└── [3]SubTreeNode(subtree):Success
+│   └── [1]SelectNode:Success
+│   │   └── [2]BtActNodeExample:Success
+
+2025-02-03 13:56:34.944+08 1ms INFO main [examples\04_subtree.rs:202] blackboard: 
+SharedBlackBoardValue { bb_name: "blackboard_data1", bb_type: "i32", bb_value: RefCell { value: 20 } }
+SharedBlackBoardValue { bb_name: "blackboard_data2", bb_type: "f32", bb_value: RefCell { value: 40.0 } }
+

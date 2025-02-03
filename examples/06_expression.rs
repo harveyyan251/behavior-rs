@@ -1,4 +1,5 @@
 use behavior::factory::BtFactory;
+use ftlog::appender::*;
 
 #[derive(Debug, Default)]
 pub struct Context {}
@@ -10,10 +11,6 @@ pub struct World(pub u64);
 pub struct Entity(pub u64);
 
 fn main() {
-    tracing_subscriber::fmt()
-        .with_max_level(tracing::Level::INFO)
-        .init();
-
     // 普通分支
     let expression_json_str = r#"
     {
@@ -178,6 +175,17 @@ fn main() {
     //     }
     // }"#;
 
+    let log_path = std::path::Path::new("./examples/log/06_expression.log");
+    std::fs::remove_file(log_path).unwrap();
+    let _guard = ftlog::builder()
+        .max_log_level(ftlog::LevelFilter::Info)
+        .root(ChainAppenders::new(vec![
+            Box::new(std::io::stdout()),
+            Box::new(FileAppender::builder().path(log_path).build()),
+        ]))
+        .try_init()
+        .unwrap();
+
     let entity = Entity(0);
     let mut world = World(0);
 
@@ -188,14 +196,13 @@ fn main() {
 
     let mut instance = bt_factory.create_tree_instance("expression").unwrap();
     for _ in 0..8 {
-        // thread_sleep(Duration::from_millis(1000));
         instance.as_mut().tick(&mut world, &entity);
-        tracing::info!(
+        ftlog::info!(
             "blackboard: \n{}",
             instance.as_ref().visualize_blackboard_map().unwrap()
         );
     }
-    tracing::info!(
+    ftlog::info!(
         "tree: \n{}",
         instance.as_ref().visualize_tree_state().unwrap()
     );

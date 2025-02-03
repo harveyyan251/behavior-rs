@@ -6,6 +6,7 @@ use behavior::{
 };
 use behavior::{generate_node, TreeNodeStatus};
 use behavior_macros::TreeNodeStatus;
+use ftlog::appender::*;
 use std::collections::HashMap;
 
 #[derive(Debug, Default)]
@@ -67,25 +68,18 @@ impl BtNode for BtActNodeExample {
     type World = World;
     type Entity = Entity;
     fn tick(&mut self, _ctx: &mut Context, _world: &mut World, _entity: &Entity) -> Status {
-        println!(
+        ftlog::info!(
             "-----------------------------(BtNodeExample::tick start)-----------------------------"
         );
         *self.bb_data1 += 10;
-        tracing::info!("bb_data1={}", *self.bb_data1);
+        ftlog::info!("bb_data1={}", *self.bb_data1);
         *self.bb_data2 += 10.0;
-        tracing::info!("bb_data2={}", *self.bb_data2);
+        ftlog::info!("bb_data2={}", *self.bb_data2);
         Status::Success
     }
 }
 
 fn main() {
-    tracing_subscriber::fmt()
-        .with_max_level(tracing::Level::INFO)
-        // .with_thread_names(true)
-        // .with_thread_ids(true)
-        // .with_line_number(true)
-        .init();
-
     let subtree_json_str = r#"
     {
         "tree_blackboard": [
@@ -173,6 +167,17 @@ fn main() {
         }
     }"#;
 
+    let log_path = std::path::Path::new("./examples/log/04_subtree.log");
+    std::fs::remove_file(log_path).unwrap();
+    let _guard = ftlog::builder()
+        .max_log_level(ftlog::LevelFilter::Info)
+        .root(ChainAppenders::new(vec![
+            Box::new(std::io::stdout()),
+            Box::new(FileAppender::builder().path(log_path).build()),
+        ]))
+        .try_init()
+        .unwrap();
+
     let entity = Entity(0);
     let mut world = World(0);
 
@@ -186,15 +191,15 @@ fn main() {
         .unwrap();
 
     let mut instance = bt_factory.create_tree_instance("parent_tree").unwrap();
-    for _ in 0..10 {
+    for _ in 0..2 {
         instance.as_mut().tick(&mut world, &entity);
     }
 
-    tracing::info!(
+    ftlog::info!(
         "tree: \n{}",
         instance.as_ref().visualize_tree_state().unwrap()
     );
-    tracing::info!(
+    ftlog::info!(
         "blackboard: \n{}",
         instance.as_ref().visualize_blackboard_map().unwrap()
     );
