@@ -1138,7 +1138,7 @@ where
         self.blackboards.iter().for_each(|value| {
             println!("\n{:?}", value);
         });
-        set_subtree_status!(self, blackboard, status)
+        set_status!(self, blackboard, status)
     }
 
     fn reset(
