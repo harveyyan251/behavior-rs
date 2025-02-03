@@ -5,6 +5,7 @@ use behavior::{
 };
 use behavior::{generate_node, TreeNodeStatus};
 use behavior_macros::TreeNodeStatus;
+use ftlog::appender::*;
 use std::collections::HashMap;
 
 #[derive(Debug, Default)]
@@ -59,40 +60,46 @@ impl BtNode for BtActNodeExample {
     type World = World;
     type Entity = Entity;
     fn tick(&mut self, _ctx: &mut Context, _world: &mut World, _entity: &Entity) -> Status {
-        println!(
+        ftlog::info!(
             "-----------------------------(BtNodeExample::tick start)-----------------------------"
         );
-        self.tick_count += 1;
+        self.tick_count = self.tick_count.wrapping_add(1);
         *self.bb_data1 += self.meta_data1.get();
         *self.bb_data2 += self.meta_data2.get();
-        tracing::info!("bb_data1={}", self.bb_data1.get());
-        tracing::info!("bb_data2={}", self.bb_data2.get());
-        tracing::info!("meta_data1={}", self.meta_data1.get());
-        tracing::info!("meta_data2={}", self.meta_data2.get());
-        tracing::info!("dyn_data1={}", self.dyn_data1.get());
-        tracing::info!("dyn_data2={}", self.dyn_data2.get());
-        tracing::info!("tick_count={}", self.tick_count);
+        if self.dyn_data1.is_mutable() {
+            *self.dyn_data1 = *self.bb_data1;
+        } else {
+            *self.bb_data1 = self.dyn_data1.get();
+        }
+        if self.dyn_data2.is_mutable() {
+            *self.dyn_data2 = *self.bb_data2;
+        } else {
+            *self.bb_data2 = self.dyn_data2.get();
+        }
+        ftlog::info!("bb_data1={}", self.bb_data1.get());
+        ftlog::info!("bb_data2={}", self.bb_data2.get());
+        ftlog::info!("meta_data1={}", self.meta_data1.get());
+        ftlog::info!("meta_data2={}", self.meta_data2.get());
+        ftlog::info!("dyn_data1={}", self.dyn_data1.get());
+        ftlog::info!("dyn_data2={}", self.dyn_data2.get());
+        ftlog::info!("tick_count={}", self.tick_count);
         Status::Success
     }
 }
 
 fn main() {
-    tracing_subscriber::fmt()
-        .with_max_level(tracing::Level::INFO)
-        .init();
-
     let basic_tree_json_str = r#"
     {
         "tree_blackboard": [
             {
                 "bb_name": "blackboard_data1",
                 "bb_type": "i32",
-                "bb_value": "1000"
+                "bb_value": "0"
             },
             {
                 "bb_name": "blackboard_data2",
                 "bb_type": "f32",
-                "bb_value": "2000.0"
+                "bb_value": "0.0"
             }
         ],
         "tree_structure": {
@@ -113,7 +120,7 @@ fn main() {
                                     "bb_data2": "blackboard_data2"
                                 },
                                 "dyn_ref_map": {
-                                    "dyn_data1": "11111",
+                                    "dyn_data1": "111",
                                     "dyn_data2": "<blackboard_data2>"
                                 }
                             }
@@ -125,15 +132,15 @@ fn main() {
                             {
                                 "name": "BtActNodeExample",
                                 "meta_map": {
-                                    "meta_data1": "50000",
-                                    "meta_data2": "10000"
+                                    "meta_data1": "100000",
+                                    "meta_data2": "200000"
                                 },
                                 "bb_ref_map": {
                                     "bb_data1": "blackboard_data1",
                                     "bb_data2": "blackboard_data2"
                                 },
                                 "dyn_ref_map": {
-                                    "dyn_data1": "2222",
+                                    "dyn_data1": "222",
                                     "dyn_data2": "<blackboard_data2>"
                                 }
                             }
@@ -143,6 +150,20 @@ fn main() {
             ]
         }
     }"#;
+
+    let _guard = ftlog::builder()
+        .max_log_level(ftlog::LevelFilter::Info)
+        .root(ChainAppenders::new(vec![
+            Box::new(std::io::stdout()),
+            Box::new(
+                FileAppender::builder()
+                    .path("./examples/log/01_basic_usage.log")
+                    // .rotate(Period::Day)
+                    .build(),
+            ),
+        ]))
+        .try_init()
+        .unwrap();
 
     let entity = Entity(0);
     let mut world = World(0);
@@ -154,16 +175,16 @@ fn main() {
         .unwrap();
 
     let mut instance = bt_factory.create_tree_instance("basic_tree").unwrap();
-    tracing::info!("tree_size={}", std::mem::size_of_val(&instance));
+    ftlog::info!("tree_size={}", std::mem::size_of_val(&instance));
     for _ in 0..2 {
         instance.as_mut().tick(&mut world, &entity);
     }
 
-    tracing::info!(
+    ftlog::info!(
         "tree: \n{}",
         instance.as_ref().visualize_tree_state().unwrap()
     );
-    tracing::info!(
+    ftlog::info!(
         "blackboard: \n{}",
         instance.as_ref().visualize_blackboard_map().unwrap()
     );

@@ -12,8 +12,8 @@ edition = "2021"
 #     "expression_node",
 # ] }
 # behavior = { version = "0.1.0", path = "../behavior", features = ["full"] }
-behavior = { version = "0.1.0", path = "../behavior" }
 # behavior-util = { version = "0.1.0", path = "../behavior-util" }
+behavior = { version = "0.1.0", path = "../behavior" }
 behavior-macros = { version = "0.1.0", path = "../behavior-macros" }
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"

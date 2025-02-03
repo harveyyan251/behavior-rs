@@ -72,7 +72,7 @@ fn main() {
         }
     }"#;
 
-    let _gaurd = ftlog::builder()
+    let _guard = ftlog::builder()
         .max_log_level(ftlog::LevelFilter::Info)
         // .time_format(time_format)
         // .bounded(100_1000, false)

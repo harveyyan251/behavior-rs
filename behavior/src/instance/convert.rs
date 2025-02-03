@@ -57,7 +57,7 @@ impl<T: ConvertFromStr> ConvertFromStr for Option<T> {
 }
 
 // Based on my experience, the following base types is sufficient for blackboard
-impl_convert_for_base_type!(bool, i32, i64, f32, f64);
+impl_convert_for_base_type!(bool, i32, i64, f32, f64, usize);
 // impl_convert_from_str!(bool, usize, i8, i16, i32, i64, i128, u8, u16, u32, u64, f32, f64);
 
 impl_convert_for_container!(Vec, VecDeque, LinkedList);
