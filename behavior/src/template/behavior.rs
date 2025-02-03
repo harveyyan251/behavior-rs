@@ -9,6 +9,7 @@ pub enum Behavior<A> {
     WaitForever(i32),
     AlwaysSuccess(i32),
     AlwaysFailure(i32),
+    AlwaysRunning(i32),
     #[cfg(feature = "expression_node")]
     Expression(i32, String),
     // Control Node

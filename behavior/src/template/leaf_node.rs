@@ -331,6 +331,79 @@ where
 }
 
 #[derive(TreeNodeStatus)]
+pub struct AlwaysRunningNode<A, C, F: ?Sized, W, E> {
+    base: TreeNodeBase,
+    index: i32,
+    _marker: PhantomData<(A, C, W, E, F)>,
+}
+impl<A, C, F: ?Sized, W, E> AlwaysRunningNode<A, C, F, W, E> {
+    pub fn new(index: i32) -> Self {
+        let base = TreeNodeBase::default();
+        Self {
+            base,
+            index,
+            _marker: PhantomData,
+        }
+    }
+}
+impl<A, C, F, W, E> TreeNode for AlwaysRunningNode<A, C, F, W, E>
+where
+    A: TreeNode<BlackBoardContext = C, World = W, Entity = E>,
+    F: ?Sized + FnMut(&mut A, &mut BlackBoard<C>, &mut W, &E) -> Status,
+{
+    type Action = A;
+    type BlackBoardContext = C;
+    type ActionTickFunc = F;
+    type World = W;
+    type Entity = E;
+
+    fn control_tick(
+        &mut self,
+        #[allow(unused)] blackboard: &mut BlackBoard<Self::BlackBoardContext>,
+        _func: &mut Self::ActionTickFunc,
+        _world: &mut Self::World,
+        _entity: &Self::Entity,
+    ) -> Status {
+        set_status!(self, blackboard, Running)
+    }
+
+    fn reset(
+        &mut self,
+        _ctx: &mut Self::BlackBoardContext,
+        _world: &mut Self::World,
+        _entity: &Self::Entity,
+    ) {
+        if self.is_running() {
+            self.reset_status();
+        }
+    }
+
+    fn node_index(&self) -> i32 {
+        self.index
+    }
+
+    fn node_type(&self) -> NodeType {
+        NodeType::LeafNode
+    }
+
+    fn children(
+        &self,
+    ) -> Vec<
+        &Box<
+            dyn TreeNode<
+                Action = Self::Action,
+                BlackBoardContext = Self::BlackBoardContext,
+                ActionTickFunc = Self::ActionTickFunc,
+                World = Self::World,
+                Entity = Self::Entity,
+            >,
+        >,
+    > {
+        Vec::default()
+    }
+}
+
+#[derive(TreeNodeStatus)]
 pub struct AlwaysFailureNode<A, C, F: ?Sized, W, E> {
     base: TreeNodeBase,
     index: i32,

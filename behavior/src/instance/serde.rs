@@ -7,8 +7,9 @@ use crate::template::{
     SubTreeNode, TimeoutNode, UntilFailureNode, UntilSuccessNode, WeightSelectNode, WhileNode,
 };
 use crate::{
-    AlwaysFailureNode, AlwaysSuccessNode, Behavior, BehaviorError, BlackBoard, BlackBoardMap,
-    ImmediateRepeatNode, ImmediateRetryNode, LogNode, ParallelAndNode, WaitForeverNode, WaitNode,
+    AlwaysFailureNode, AlwaysRunningNode, AlwaysSuccessNode, Behavior, BehaviorError, BlackBoard,
+    BlackBoardMap, ImmediateRepeatNode, ImmediateRetryNode, LogNode, ParallelAndNode,
+    WaitForeverNode, WaitNode,
 };
 use ahash::HashMapExt;
 use serde::{Deserialize, Serialize};
@@ -106,6 +107,10 @@ impl TreeTemplate {
             Behavior::AlwaysFailure(node_index) => {
                 let always_failure_node = AlwaysFailureNode::new(*node_index);
                 Ok(Box::new(always_failure_node))
+            }
+            Behavior::AlwaysRunning(node_index) => {
+                let always_running_node = AlwaysRunningNode::new(*node_index);
+                Ok(Box::new(always_running_node))
             }
             #[cfg(feature = "expression_node")]
             Behavior::Expression(node_index, expression_str) => {
