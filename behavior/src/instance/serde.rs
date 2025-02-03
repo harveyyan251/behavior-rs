@@ -8,7 +8,7 @@ use crate::template::{
 };
 use crate::{
     AlwaysFailureNode, AlwaysSuccessNode, Behavior, BehaviorError, BlackBoard, BlackBoardMap,
-    ImmediateRepeatNode, ImmediateRetryNode, ParallelAndNode, WaitForeverNode, WaitNode,
+    ImmediateRepeatNode, ImmediateRetryNode, LogNode, ParallelAndNode, WaitForeverNode, WaitNode,
 };
 use ahash::HashMapExt;
 use serde::{Deserialize, Serialize};
@@ -577,6 +577,22 @@ impl TreeTemplate {
                     )?,
                 );
                 Ok(Box::new(retry_node))
+            }
+            Behavior::Log(node_index, blackboards_str, child) => {
+                let log_node = LogNode::new(
+                    *node_index,
+                    blackboards_str,
+                    blackboard_map,
+                    Self::to_tree_state(
+                        factory,
+                        tree_name,
+                        tree_index,
+                        tree_depth,
+                        child,
+                        blackboard_map,
+                    )?,
+                );
+                Ok(Box::new(log_node))
             }
             Behavior::SubTree(node_index, subtree_name, parent_ref_map) => {
                 let BtInstance {

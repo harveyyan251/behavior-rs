@@ -43,5 +43,6 @@ pub enum Behavior<A> {
     ImmediateRepeat(i32, i32, Box<Behavior<A>>),
     Retry(i32, i32, Box<Behavior<A>>),
     ImmediateRetry(i32, i32, Box<Behavior<A>>),
+    Log(i32, String, Box<Behavior<A>>),
     SubTree(i32, String, HashMap<String, String>),
 }

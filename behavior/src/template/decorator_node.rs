@@ -1,9 +1,9 @@
 use super::status::Status::*;
-use super::{BlackBoard, Status, TreeNode, TreeNodeBase, TreeNodeType};
+use super::{
+    BlackBoard, BlackBoardMap, SharedBlackBoardValue, Status, TreeNode, TreeNodeBase, TreeNodeType,
+};
 use super::{NodeType, TreeNodeStatus};
 use behavior_macros::TreeNodeStatus;
-#[cfg(feature = "tree_visualization")]
-use std::fmt::Write;
 
 #[derive(TreeNodeStatus)]
 pub struct InvertNode<A, C, F: ?Sized, W, E> {
@@ -1074,6 +1074,111 @@ where
 }
 
 #[derive(TreeNodeStatus)]
+pub struct LogNode<A, C, F: ?Sized, W, E> {
+    base: TreeNodeBase,
+    index: i32,
+    blackboards: Vec<SharedBlackBoardValue>,
+    child: TreeNodeType<A, C, F, W, E>,
+}
+impl<A, C, F: ?Sized, W, E> LogNode<A, C, F, W, E> {
+    pub fn new(
+        index: i32,
+        blackboards_str: &str,
+        blackboard_map: &BlackBoardMap,
+        child: TreeNodeType<A, C, F, W, E>,
+    ) -> Self {
+        let base = TreeNodeBase::default();
+        let blackboards: Vec<_> = blackboards_str
+            .split('|')
+            .map(
+                |blackbaord_name| match blackboard_map.get(blackbaord_name).cloned() {
+                    Some(value) => value,
+                    None => panic!(
+                        "LogNode blackboard not found, blackboard_name={}, blackboards_str={}",
+                        blackbaord_name, blackboards_str
+                    ),
+                },
+            )
+            .collect();
+        Self {
+            base,
+            index,
+            blackboards,
+            child,
+        }
+    }
+}
+impl<A, C, F, W, E> TreeNode for LogNode<A, C, F, W, E>
+where
+    A: TreeNode<BlackBoardContext = C, World = W, Entity = E>,
+    F: ?Sized + FnMut(&mut A, &mut BlackBoard<C>, &mut W, &E) -> Status,
+{
+    type Action = A;
+    type BlackBoardContext = C;
+    type ActionTickFunc = F;
+    type World = W;
+    type Entity = E;
+
+    fn control_tick(
+        &mut self,
+        blackboard: &mut BlackBoard<Self::BlackBoardContext>,
+        func: &mut Self::ActionTickFunc,
+        world: &mut Self::World,
+        entity: &Self::Entity,
+    ) -> Status {
+        let status = match self.child.control_tick(blackboard, func, world, entity) {
+            status @ (Success | Failure | Running) => status,
+            _ => panic_if_idle_or_branch!(
+                self.node_name(),
+                self.index,
+                self.child.node_name(),
+                self.child.node_index()
+            ),
+        };
+        self.blackboards.iter().for_each(|value| {
+            println!("\n{:?}", value);
+        });
+        set_subtree_status!(self, blackboard, status)
+    }
+
+    fn reset(
+        &mut self,
+        ctx: &mut Self::BlackBoardContext,
+        world: &mut Self::World,
+        entity: &Self::Entity,
+    ) {
+        if self.is_running() {
+            self.reset_status();
+            self.child.reset(ctx, world, entity);
+        }
+    }
+
+    fn node_index(&self) -> i32 {
+        self.index
+    }
+
+    fn node_type(&self) -> NodeType {
+        NodeType::DecoratorNode
+    }
+
+    fn children(
+        &self,
+    ) -> Vec<
+        &Box<
+            dyn TreeNode<
+                Action = Self::Action,
+                BlackBoardContext = Self::BlackBoardContext,
+                ActionTickFunc = Self::ActionTickFunc,
+                World = Self::World,
+                Entity = Self::Entity,
+            >,
+        >,
+    > {
+        vec![&self.child]
+    }
+}
+
+#[derive(TreeNodeStatus)]
 pub struct SubTreeNode<A, C, F: ?Sized, W, E> {
     base: TreeNodeBase,
     index: i32,
@@ -1180,6 +1285,8 @@ where
             is_last: bool,
             depth: usize,
         ) -> std::fmt::Result {
+            use std::fmt::Write;
+
             let prefix = if depth == 0 {
                 "".to_string()
             } else {
